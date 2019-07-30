@@ -23,12 +23,12 @@ for i in `seq 20`; do
 done
 
 
-echo "Depot:        unittests
+echo "Depot:        $DEPOT_NAME
 Owner:        p4admin
 Description:  Created by p4admin.
 Type:         stream
-StreamDepth:  //unittests/1/2
-Map:          unittests/..." | p4 depot -i
+StreamDepth:  //$DEPOT_NAME/1/2
+Map:          $DEPOT_NAME/..." | p4 depot -i
 
 
 echo "User:unittest-user

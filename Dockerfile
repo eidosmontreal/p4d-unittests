@@ -1,15 +1,12 @@
 FROM ubuntu:xenial
-MAINTAINER Gaspard Petit <gpetit@eidosmontreal.com>
 
 RUN  apt-get update \
   && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Define valiables
-ARG HELIX_VERSION=2018.2-1724420~xenial
-
 # Set environment variables
 ENV SERVER_NAME perforce
+ENV DEPOT_NAME unittests
 ENV P4PORT 1666
 ENV P4USER p4admin
 ENV P4PASSWD p4admin@123
@@ -22,7 +19,7 @@ RUN echo "deb http://package.perforce.com/apt/ubuntu xenial release" | tee /etc/
 
 # Install the perforce server and dependent packages
 RUN apt-get update && \
-    apt-get install -y net-tools helix-p4d=${HELIX_VERSION}
+    apt-get install -y net-tools helix-p4d
 
 # Expose default p4d connector port
 EXPOSE 1666
