@@ -6,7 +6,13 @@ RUN  apt-get update \
 
 # Set environment variables
 ENV SERVER_NAME perforce
+
+# initial depot name
 ENV DEPOT_NAME unittests
+
+#multiple valid user names separated by a space
+ENV DEPOT_USERS unittest-user
+
 ENV P4PORT 1666
 ENV P4USER p4admin
 ENV P4PASSWD p4admin@123

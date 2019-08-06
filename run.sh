@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Check the server was configured.
@@ -30,11 +30,13 @@ Type:         stream
 StreamDepth:  //$DEPOT_NAME/1/2
 Map:          $DEPOT_NAME/..." | p4 depot -i
 
-
-echo "User:unittest-user
-Email:unittest-user@localhost
-FullName:unittest-user" | p4 user -i -f
-
+for user in $DEPOT_USERS
+do
+    echo "Adding user to p4d: $user"
+	echo "User:$user
+	Email:$user@localhost
+	FullName:$user" | p4 user -i -f
+done
 
 echo 'Triggers: noauth auth-check auth "/noauth.sh %user%"' | p4 triggers -i
 p4 admin restart
