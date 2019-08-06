@@ -35,7 +35,7 @@ for user in $DEPOT_USERS; do
 	echo "User:$user
 Email:$user@localhost
 FullName:$user
-" | tee /dev/tty | p4 user -i -f
+" | tee >(p4 user -i -f)
 done
 
 echo 'Triggers: noauth auth-check auth "/noauth.sh %user%"' | p4 triggers -i
