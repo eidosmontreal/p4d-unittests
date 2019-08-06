@@ -30,12 +30,12 @@ Type:         stream
 StreamDepth:  //$DEPOT_NAME/1/2
 Map:          $DEPOT_NAME/..." | p4 depot -i
 
-for user in $DEPOT_USERS
-do
-    echo "Adding user to p4d: $user"
+for user in $DEPOT_USERS; do
+  echo "Adding user to p4d: $user"
 	echo "User:$user
-	Email:$user@localhost
-	FullName:$user" | p4 user -i -f
+Email:$user@localhost
+FullName:$user
+" | tee /dev/tty | p4 user -i -f
 done
 
 echo 'Triggers: noauth auth-check auth "/noauth.sh %user%"' | p4 triggers -i
