@@ -25,7 +25,7 @@ RUN echo "deb http://package.perforce.com/apt/ubuntu xenial release" | tee /etc/
 
 # Install the perforce server and dependent packages
 RUN apt-get update && \
-    apt-get install -y net-tools helix-p4d
+    apt-get install -y net-tools helix-p4d-base=2019.2-2224541~xenial helix-p4d=2019.2-2224541~xenial
 
 # Expose default p4d connector port
 EXPOSE 1666
