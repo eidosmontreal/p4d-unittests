@@ -39,9 +39,5 @@ VOLUME /etc/perforce
 ADD ./run.sh /
 ADD ./noauth.sh /
 
-# Debug
-RUN ls /
-RUN cat /run.sh
-
 # Run the file
 CMD exec /run.sh
