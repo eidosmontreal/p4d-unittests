@@ -22,13 +22,23 @@ for i in `seq 20`; do
     sleep 2
 done
 
-
 echo "Depot:        $DEPOT_NAME
 Owner:        p4admin
 Description:  Created by p4admin.
 Type:         stream
 StreamDepth:  //$DEPOT_NAME/1/2
 Map:          $DEPOT_NAME/..." | p4 depot -i
+
+for depot in $DEPOT_NAMES; do
+  echo "Adding stream depot to p4d: $depot"
+	echo "Depot:        $depot
+Owner:        p4admin
+Description:  Created by p4admin.
+Type:         stream
+StreamDepth:  //$depot/1/2
+Map:          $depot/...
+" | tee >(p4 depot -i)
+done
 
 for user in $DEPOT_USERS; do
   echo "Adding user to p4d: $user"
