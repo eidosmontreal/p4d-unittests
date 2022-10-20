@@ -40,4 +40,4 @@ ADD ./run.sh /
 ADD ./noauth.sh /
 
 # Run the file
-CMD ["/run.sh"]
+CMD exec /run.sh
